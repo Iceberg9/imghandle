@@ -18,7 +18,7 @@ function file_get_contents_curl($url) {
 
 $key = 'm6bt0x9KAGdEEUiH_M8HwzM6nuRZFxTK';
 //$file = 'https://cdn.shopify.com/s/files/1/1141/0348/products/andean_dream_chocochip_galles_01_1024x1024.png?v=1458065262';
-$file = $_POST['src'];
+$file = $_GET['src'];
 //$fileOutput = 'output.png';
 //$fileOutput = $_POST['src_output'];
 $verbose = true;
