@@ -21,7 +21,8 @@ $key = 'm6bt0x9KAGdEEUiH_M8HwzM6nuRZFxTK';
 //$fileOutput = 'output.png';
 $file = $_GET['src'];
 $r2d2 = explode('products/', $file);
-$fileOutput = $r2d2[1];
+$c3po = explode('?v=', $r2d2[1]);
+$fileOutput = $c3po[0];
 $verbose = true;
 
 // Sanity checks
@@ -75,7 +76,7 @@ if (curl_getinfo($request, CURLINFO_HTTP_CODE) === 201) {
 	// Hacemos visible la respuesta
 	if ( $verbose ) {
 		//echo "$file: $input_size => $output_size - $percent\n"; // Para debugear que la tarea este completa
-		echo 'http://iceberg9.com/tinyAPI/' . $r2d2[1];
+		echo 'http://iceberg9.com/tinyAPI/' . $fileOutput;
 	}
 } else {
 	print(curl_error($request));
