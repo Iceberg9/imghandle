@@ -18,13 +18,14 @@ function file_get_contents_curl($url) {
 
 $key = 'm6bt0x9KAGdEEUiH_M8HwzM6nuRZFxTK';
 //$file = 'https://cdn.shopify.com/s/files/1/1141/0348/products/andean_dream_chocochip_galles_01_1024x1024.png?v=1458065262';
-$file = $_GET['src'];
 //$fileOutput = 'output.png';
-//$fileOutput = $_POST['src_output'];
+$file = $_GET['src'];
+$r2d2 = explode('products/', $file);
+$fileOutput = $r2d2[1];
 $verbose = true;
 
 // Sanity checks
-if ( empty( $file ) ) die( 'Lo siento, la varible $file esta vacía o no es correcta.' );
+if ( empty( $file ) ) die( 'Lo siento, el campo imagen esta vacio o llenado incorrectamente.' );
 //if ( ! is_file( $file ) ) die( 'Lo siento, no puedo encontrar el archivo:' . " $file\n" );
 
 // Le damos el mismo nombre al output. Esto remplazara la imagen OJO.
@@ -67,14 +68,14 @@ if (curl_getinfo($request, CURLINFO_HTTP_CODE) === 201) {
 				//CURLOPT_CAINFO => __DIR__ . "/cacert.pem",
 				CURLOPT_SSL_VERIFYPEER => true
 			));
-			file_put_contents($output, curl_exec($request)); //-- Para guardar con el mismo nombre del input (sobrescribir)
-			//file_put_contents($fileOutput, curl_exec($request)); // Para guardar con OTRO nombre.
+			//file_put_contents($output, curl_exec($request)); /*Para guardar con el mismo nombre del input (sobrescribir)*/
+			file_put_contents($fileOutput, curl_exec($request)); /* Para guardar con OTRO nombre.*/
 		}
 	}
 	// Hacemos visible la respuesta
 	if ( $verbose ) {
 		//echo "$file: $input_size => $output_size - $percent\n"; // Para debugear que la tarea este completa
-		echo 'http://iceberg9.com/tinyAPI/' . $file;
+		echo 'http://iceberg9.com/tinyAPI/' . $r2d2[1];
 	}
 } else {
 	print(curl_error($request));
