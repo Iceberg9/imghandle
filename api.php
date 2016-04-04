@@ -67,7 +67,7 @@ if (curl_getinfo($request, CURLINFO_HTTP_CODE) === 201) {
 				//CURLOPT_CAINFO => __DIR__ . "/cacert.pem",
 				CURLOPT_SSL_VERIFYPEER => true
 			));
-			file_put_contents($output, curl_exec($request)); -- Para guardar con el mismo nombre del input (sobrescribir)
+			file_put_contents($output, curl_exec($request)); //-- Para guardar con el mismo nombre del input (sobrescribir)
 			//file_put_contents($fileOutput, curl_exec($request)); // Para guardar con OTRO nombre.
 		}
 	}
