@@ -16,7 +16,8 @@ function file_get_contents_curl($url) {
   return $res;
 }
 
-$key = 'm6bt0x9KAGdEEUiH_M8HwzM6nuRZFxTK';
+//$key = 'm6bt0x9KAGdEEUiH_M8HwzM6nuRZFxTK';
+$key = $_GET['key'];
 //$file = 'https://cdn.shopify.com/s/files/1/1141/0348/products/andean_dream_chocochip_galles_01_1024x1024.png?v=1458065262';
 //$fileOutput = 'output.png';
 $file = $_GET['src'];
@@ -35,7 +36,8 @@ $input = $output = $file;
 // tinypng.com example API code: 
 $request = curl_init();
 curl_setopt_array($request, array(
-	CURLOPT_URL => "https://api.tinypng.com/shrink",
+	//CURLOPT_URL => "https://api.tinypng.com/shrink",
+	CURLOPT_URL => "https://api.tinify.com/shrink",
 	CURLOPT_USERPWD => "api:" . $key,
 	//CURLOPT_POSTFIELDS => file_get_contents($input), --> Solo si jalamos imagenes DENTRO del servior
 	CURLOPT_POSTFIELDS => file_get_contents_curl($input), // Solo si jalamos imagenes FUERA del servidor
